@@ -86,7 +86,7 @@ public class Enemy2AI : MonoBehaviour
         Debug.Log("Enemy2 SALDIRDI! Hasar: " + attackDamage + " (Seviye: " + level + ")");
         
         // İLERDE KİŞİ 3 İLE BİRLEŞTİRMEK İÇİN:
-        // player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
+         player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
         
         // Geçici görsel efekt için rengini kırmızı yap
         GetComponent<SpriteRenderer>().color = Color.red;
