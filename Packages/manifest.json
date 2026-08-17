@@ -1,5 +1,16 @@
 {
   "dependencies": {
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    "com.unity.2d.sprite": "1.0.0",
+    "com.unity.cinemachine": "3.1.7",
+    "com.unity.device-simulator.devices": "1.0.1",
+    "com.unity.inputsystem": "1.20.0",
+    "com.unity.multiplayer.center": "1.0.1",
+    "com.unity.ugui": "2.0.0",
+=======
+>>>>>>> Stashed changes
     "com.unity.2d.animation": "13.0.5",
     "com.unity.2d.aseprite": "3.0.2",
     "com.unity.2d.psdimporter": "12.0.2",
@@ -18,6 +29,10 @@
     "com.unity.timeline": "1.8.12",
     "com.unity.ugui": "2.0.0",
     "com.unity.visualscripting": "1.9.12",
+<<<<<<< Updated upstream
+=======
+>>>>>>> 7690843055fedaa6c7c29f3eb0233b8228092a7e
+>>>>>>> Stashed changes
     "com.unity.modules.accessibility": "1.0.0",
     "com.unity.modules.adaptiveperformance": "1.0.0",
     "com.unity.modules.ai": "1.0.0",

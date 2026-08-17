@@ -4,7 +4,15 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
+<<<<<<< Updated upstream
   productGUID: 526468573157e0e49afe3a7e110f9739
+=======
+<<<<<<< HEAD
+  productGUID: d2643b79ee27871438cb20c884aafb0a
+=======
+  productGUID: 526468573157e0e49afe3a7e110f9739
+>>>>>>> 7690843055fedaa6c7c29f3eb0233b8228092a7e
+>>>>>>> Stashed changes
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -271,7 +279,15 @@ PlayerSettings:
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
   AndroidTargetArchitectures: 2
+<<<<<<< Updated upstream
   AndroidAllowedArchitectures: -13
+=======
+<<<<<<< HEAD
+  AndroidAllowedArchitectures: -1
+=======
+  AndroidAllowedArchitectures: -13
+>>>>>>> 7690843055fedaa6c7c29f3eb0233b8228092a7e
+>>>>>>> Stashed changes
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: 
@@ -874,9 +890,17 @@ PlayerSettings:
   qnxGraphicConfPath: 
   apiCompatibilityLevel: 6
   captureStartupLogs: {}
-  activeInputHandler: 1
+  activeInputHandler: 2
   windowsGamepadBackendHint: 0
+<<<<<<< Updated upstream
   cloudProjectId: fd26a3e5-366a-4298-bfe2-1b0313d8a4f4
+=======
+<<<<<<< HEAD
+  cloudProjectId: a73768b5-ec8e-4cba-a031-3feb15d01d7c
+=======
+  cloudProjectId: fd26a3e5-366a-4298-bfe2-1b0313d8a4f4
+>>>>>>> 7690843055fedaa6c7c29f3eb0233b8228092a7e
+>>>>>>> Stashed changes
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: My project
