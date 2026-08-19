@@ -84,10 +84,24 @@ public class Enemy2AI : MonoBehaviour
         // Burada gerçek hasar verme işlemi var.
         // Oyuncunun canı olduğunu varsayıyoruz (Kişi 3'ün sistemiyle bağlanacak).
         Debug.Log("Enemy2 SALDIRDI! Hasar: " + attackDamage + " (Seviye: " + level + ")");
-        
-        // İLERDE KİŞİ 3 İLE BİRLEŞTİRMEK İÇİN:
-         player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
-        
+
+        // İLERDE KİŞİ 3 İLE BİRLEŞTİRMEK İÇİN GÜVENLİK KONTROLÜ:
+        if (player != null)
+        {
+            PlayerHealth pHealth = player.GetComponent<PlayerHealth>();
+
+            // Eğer Kişi 3 PlayerHealth scriptini karaktere eklediyse hasar ver
+            if (pHealth != null)
+            {
+                pHealth.TakeDamage(attackDamage);
+            }
+            else
+            {
+                // Eğer eklemediyse oyunu çökertme, sadece konsola uyarı yaz
+                Debug.LogWarning("Kişi 3 henüz PlayerHealth scriptini karaktere eklememiş! Hasar pas geçildi.");
+            }
+        }
+
         // Geçici görsel efekt için rengini kırmızı yap
         GetComponent<SpriteRenderer>().color = Color.red;
         Invoke("ResetColor", 0.2f);
