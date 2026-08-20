@@ -26,6 +26,7 @@ public class Damageable : MonoBehaviour
 
     private void Die()
     {
+        // TODO (Kişi 9): Burada canavar ölüm efekti/sesi oynatılacak
         Debug.Log($"{gameObject.name} öldü.");
         Destroy(gameObject);
     }
