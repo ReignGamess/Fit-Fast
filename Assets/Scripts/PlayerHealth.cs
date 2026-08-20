@@ -5,6 +5,10 @@ public class PlayerHealth : MonoBehaviour
     [Header("Can Ayarları")]
     [SerializeField] private int maxHealth = 100;
     private int currentHealth;
+    private bool isDead = false; // Oyuncu öldü mü kontrolü
+
+    [Header("Game Over Bağlantısı")]
+    [SerializeField] private GameOverManager gameOverManager;
 
     private void Awake()
     {
@@ -13,6 +17,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (isDead) return; // Zaten ölmüşse hiçbir şey yapma, düşman saldırmaya devam etse bile can azalmasın
+
         currentHealth -= amount;
         currentHealth = Mathf.Max(currentHealth, 0);
 
@@ -26,7 +32,21 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        if (isDead) return; // Die() bir kere çalışsın, tekrar tekrar tetiklenmesin
+        isDead = true;
+
         Debug.Log("Oyuncu öldü.");
-        // İleride: Game Over ekranı, yeniden başlatma vs.
+
+        // TODO (Kişi 9): Burada ölüm animasyonu/sesi/efekti oynatılacak
+
+        // Oyuncunun hareket ve saldırı yeteneklerini kapat, ölü karakter artık kontrol edilemesin
+        var attack = GetComponent<PlayerAttack>();
+        if (attack != null) attack.enabled = false;
+
+        // Game Over ekranını göster
+        if (gameOverManager != null)
+        {
+            gameOverManager.ShowGameOver();
+        }
     }
 }
