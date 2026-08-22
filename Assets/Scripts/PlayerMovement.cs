@@ -47,8 +47,8 @@ public class PlayerMovement : MonoBehaviour
         // Eğer hareket varsa
         if (movementDirection.sqrMagnitude > 0.01f)
         {
-            // Karakterin yürüdüğünü belirtmek için 'IsWalking' true yapılıyor
-            animator.SetBool("IsWalking", true);
+            // Karakterin yürüdüğünü belirtmek için 'isRunning' true yapılıyor
+            animator.SetBool("isRunning", true);
 
             // Hangi yöne baktığını Animator'a bildiriyoruz
             animator.SetFloat("InputX", movementDirection.x);
@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             // Hareket yoksa durma (Idle) durumuna geçiliyor
-            animator.SetBool("IsWalking", false);
+            animator.SetBool("isRunning", false);
         }
     }
 }
