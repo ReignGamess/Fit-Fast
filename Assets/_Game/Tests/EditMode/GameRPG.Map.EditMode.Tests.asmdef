@@ -1,0 +1,12 @@
+{
+    "name": "GameRPG.Map.EditMode.Tests",
+    "references": [
+        "GameRPG.Map"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}

@@ -15,7 +15,15 @@ public enum HealthyFood
     CitirIspanak,        // Crispy Spinach Leaves
     KraliyetAvokadosu,   // Royal Avocado
     AromatikKereviz,     // Aromatic Celery
-    KopukluYesilKivi     // Sparkling Green Kiwi
+    KopukluYesilKivi,    // Sparkling Green Kiwi
+    Elma,
+    Muz,
+    Kiraz,
+    Kivi,
+    Kavun,
+    Portakal,
+    Ananas,
+    Cilek
 }
 
 // 2. İksir tarifinin yapısını belirleyen Sınıf

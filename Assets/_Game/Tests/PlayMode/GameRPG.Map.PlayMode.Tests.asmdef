@@ -1,0 +1,9 @@
+{
+    "name": "GameRPG.Map.PlayMode.Tests",
+    "references": [
+        "GameRPG.Map"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}
