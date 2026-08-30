@@ -3007,7 +3007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -33.43799, y: -29.579895}
+  m_AnchoredPosition: {x: -33.43799, y: -29.579865}
   m_SizeDelta: {x: -1059.7349, y: -496.4292}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &578316889
@@ -12839,25 +12839,69 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 47350053293609428, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
+      propertyPath: launchForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 47350053293609428, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
+      propertyPath: damageAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 47350053293609428, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
+      propertyPath: attackCooldown
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 47350053293609428, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
+      propertyPath: detectionRange
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 47350053293609428, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
+      propertyPath: explosionRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 47350053293609428, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
+      propertyPath: projectileCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 47350053293609428, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
+      propertyPath: circleRingPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 47350053293609428, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 2419013490073283746, guid: 01b808705ed232a40ae5c5df55b7b3f5, type: 3}
+    - target: {fileID: 47350053293609428, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 47350053293609428, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
+      propertyPath: damageParticlePrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6668259257814982860, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
       propertyPath: m_Name
       value: Monster3
       objectReference: {fileID: 0}
+    - target: {fileID: 6668259257814982860, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8913894773189861422, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5442
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8913894773189861422, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5442
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8913894773189861422, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.34
+      value: 3.24
       objectReference: {fileID: 0}
     - target: {fileID: 8913894773189861422, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.72
+      value: 1.73
       objectReference: {fileID: 0}
     - target: {fileID: 8913894773189861422, guid: 46bb2f3763cf70247800b8849a810e69, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12904,9 +12948,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2540426380639652588, guid: f71a901e76b82ec47b0075252addb034, type: 3}
+      propertyPath: leapSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540426380639652588, guid: f71a901e76b82ec47b0075252addb034, type: 3}
+      propertyPath: leapDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540426380639652588, guid: f71a901e76b82ec47b0075252addb034, type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540426380639652588, guid: f71a901e76b82ec47b0075252addb034, type: 3}
+      propertyPath: detectionRange
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3583145455031559132, guid: f71a901e76b82ec47b0075252addb034, type: 3}
       propertyPath: m_Name
       value: Monster4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583145455031559132, guid: f71a901e76b82ec47b0075252addb034, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7047718377821068277, guid: f71a901e76b82ec47b0075252addb034, type: 3}
       propertyPath: m_LocalScale.x
@@ -13020,6 +13084,10 @@ PrefabInstance:
     - target: {fileID: 5123950582118981935, guid: 64d2117ce44fe8d43a7fc2a48c264111, type: 3}
       propertyPath: m_Name
       value: Monster2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5123950582118981935, guid: 64d2117ce44fe8d43a7fc2a48c264111, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6750671935089018451, guid: 64d2117ce44fe8d43a7fc2a48c264111, type: 3}
       propertyPath: attackRange
