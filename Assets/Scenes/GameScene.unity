@@ -3312,7 +3312,7 @@ MonoBehaviour:
     useRandomInterval: 1
     randomIntervalRange: {x: 2, y: 5}
     maximumActive: 20
-    totalLimit: 10
+    totalLimit: 5
 --- !u!1 &679170425
 GameObject:
   m_ObjectHideFlags: 0
