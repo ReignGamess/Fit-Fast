@@ -11,7 +11,7 @@ public class Enemy4AI : MonoBehaviour
     [Tooltip("Canavarın devriye gezeceği alanın yarıçapı")]
     public float wanderRadius = 3f;
 
-    [Header("Sıçrama Saldırısı Ayarları")]
+    [Header("D9 - Sıçrama Saldırısı Ayarları")]
     [Tooltip("Sıçrama anındaki hareket hızı")]
     public float leapSpeed = 8f;
     [Tooltip("Sıçrama saldırıları arasındaki bekleme süresi (saniye)")]

@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 6668259257814982860}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.34, y: 1.72, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -196,3 +196,10 @@ MonoBehaviour:
   moveSpeed: 5
   detectionRange: 5
   wanderRadius: 3
+  projectilePrefab: {fileID: 2419013490073283746, guid: 01b808705ed232a40ae5c5df55b7b3f5, type: 3}
+  launchForce: 7
+  attackCooldown: 2
+  explosionRadius: 1
+  damageAmount: 10
+  playerDamageColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.2

@@ -11,7 +11,7 @@ public class Enemy3AI : MonoBehaviour
     [Tooltip("Canavarın devriye gezeceği alanın yarıçapı")]
     public float wanderRadius = 3f;
 
-    [Header("Saldırı ve Fırlatma Sistemi")]
+    [Header("D9 - Saldırı ve Fırlatma Sistemi")]
     [Tooltip("Fırlatılacak nesnenin (Bomba/Mermi) Prefab'ı")]
     public GameObject projectilePrefab;
     [Tooltip("Nesnenin fırlatılma hızı")]

@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 3583145455031559132}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.46, y: 1.91, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -194,5 +194,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy4AI
   moveSpeed: 4
-  detectionRange: 6
+  detectionRange: 8
   wanderRadius: 5
+  leapSpeed: 20
+  attackCooldown: 2
+  chargeTime: 0.5
+  leapDuration: 1
+  damageAmount: 10
+  explosionRadius: 1
+  playerDamageColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.2
