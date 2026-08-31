@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
     [Header("Game Over Bağlantısı")]
     [SerializeField] private GameOverManager gameOverManager;
 
+    [HideInInspector] public float damageReduction = 0f; // 0 = normal, 0.5 = hasarın yarısı azalır   CAN KALKANI İKSİRİ İÇİN
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -17,17 +19,29 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if (isDead) return; // Zaten ölmüşse hiçbir şey yapma, düşman saldırmaya devam etse bile can azalmasın
+        if (isDead) return;
 
-        currentHealth -= amount;
+        int finalDamage = Mathf.RoundToInt(amount * (1f - damageReduction)); // Kalkan varsa hasarı azalt GELEN HASAR YARIYA İNER
+        currentHealth -= finalDamage;
         currentHealth = Mathf.Max(currentHealth, 0);
 
-        Debug.Log($"Oyuncu {amount} hasar aldı. Kalan can: {currentHealth}");
+        Debug.Log($"Oyuncu {finalDamage} hasar aldı. Kalan can: {currentHealth}");
 
         if (currentHealth <= 0)
         {
             Die();
         }
+    }
+
+    //can yenileme, iyileşme
+    public void Heal(int amount)
+    {
+        if (isDead) return; // Ölmüş karakter iyileşemez
+
+        currentHealth += amount;
+        currentHealth = Mathf.Min(currentHealth, maxHealth); // Can, maxHealth'i geçemesin
+
+        Debug.Log($"Oyuncu {amount} can yeniledi. Güncel can: {currentHealth}");
     }
 
     private void Die()

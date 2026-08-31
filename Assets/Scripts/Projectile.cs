@@ -43,12 +43,11 @@ public class Projectile : MonoBehaviour
         // Çarptığımız objenin etiketi "Enemy" mi?
         if (collision.CompareTag("Enemy"))
         {
-            // Düşmanın üzerindeki EnemyHealth scriptine ulaşıyoruz
-            EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
+            Damageable enemy = collision.GetComponent<Damageable>();
             if (enemy != null)
             {
-                // Hasarı iletiyoruz
-                enemy.TakeDamage(damage);
+                int finalDamage = Mathf.RoundToInt(damage * PotionEffectManager.CurrentDamageMultiplier);
+                enemy.TakeDamage(finalDamage);
             }
 
             // Mermiyi yok ediyoruz

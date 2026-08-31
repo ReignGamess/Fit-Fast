@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         // Karakteri hareket ettiriyoruz
-        rb.linearVelocity = movementDirection * moveSpeed;
+        rb.linearVelocity = movementDirection * moveSpeed * PotionEffectManager.CurrentSpeedMultiplier;  //HIZI ÇARPANLA ÇARPIYORUZ
     }
 
     // Animasyon geçişlerini ve yön mantığını yöneten fonksiyon

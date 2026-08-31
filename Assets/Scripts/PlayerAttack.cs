@@ -67,7 +67,8 @@ public class PlayerAttack : MonoBehaviour
             Damageable damageable = hit.GetComponent<Damageable>();
             if (damageable != null)
             {
-                damageable.TakeDamage(damageAmount);
+                int finalDamage = Mathf.RoundToInt(damageAmount * PotionEffectManager.CurrentDamageMultiplier);
+                damageable.TakeDamage(finalDamage);
             }
         }
 
