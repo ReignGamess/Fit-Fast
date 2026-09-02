@@ -10,8 +10,10 @@ public class Damage : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
     [SerializeField] private float selectThreshold = 70f;
 
     [Header("Potion Durumları")]
-    [SerializeField] private bool[] isSlotUnlocked = { true, true, true, true };
-    private bool[] isSlotOnCooldown = new bool[4]; // Bekleme süresinde olan iksirler
+    [Tooltip("Inspector'dan hangi slotun açık hangisinin kilitli olduğunu seçebilirsin.")]
+    [SerializeField] private bool[] isSlotUnlocked = { true, true, false, false }; // Son ikisi kilitli!
+    
+    private bool[] isSlotOnCooldown;
 
     public static int ActivePotionIndex = 0;
 
@@ -20,9 +22,32 @@ public class Damage : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
     private RectTransform rectTransform;
 
     void Awake()
+{
+    rectTransform = GetComponent<RectTransform>();
+
+    // Sadece ismi "button" içeren veya üzerinde Button bileşeni olan çocukları slot olarak al
+    System.Collections.Generic.List<RectTransform> validSlots = new System.Collections.Generic.List<RectTransform>();
+
+    for (int i = 0; i < transform.childCount; i++)
     {
-        rectTransform = GetComponent<RectTransform>();
+        Transform child = transform.GetChild(i);
+        // Text (TMP) gibi sadece görsel olan elemanları atla, sadece buton olanları al
+        if (child.GetComponent<UnityEngine.UI.Button>() != null)
+        {
+            validSlots.Add(child.GetComponent<RectTransform>());
+        }
     }
+
+    int childCount = validSlots.Count;
+    slots = validSlots.ToArray();
+    isSlotOnCooldown = new bool[childCount];
+
+    // Inspector'daki kilit durumlarını koru ve dizi boyutunu iksir sayısına eşitle
+    if (isSlotUnlocked == null || isSlotUnlocked.Length < childCount)
+    {
+        System.Array.Resize(ref isSlotUnlocked, childCount);
+    }
+}
 
     void Start()
     {
@@ -50,15 +75,19 @@ public class Damage : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
 
         if (currentSelectedIndex != -1 && currentSelectedIndex < slots.Length)
         {
-            // Sadece kilitli OLMAYAN ve BEKLEMEDE OLMAYAN iksirler seçilebilir
+            // Kilitli veya Beklemede olan iksir seçilemez
             if (isSlotUnlocked[currentSelectedIndex] && !isSlotOnCooldown[currentSelectedIndex])
             {
                 ActivePotionIndex = currentSelectedIndex;
                 TriggerSelectedPotion(ActivePotionIndex);
             }
+            else if (!isSlotUnlocked[currentSelectedIndex])
+            {
+                Debug.Log("Bu iksir henüz kilitli!");
+            }
             else if (isSlotOnCooldown[currentSelectedIndex])
             {
-                Debug.Log("Bu iksir şu an bekleme süresinde!");
+                Debug.Log("Bu iksir bekleme süresinde!");
             }
         }
 
@@ -86,7 +115,7 @@ public class Damage : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
                 break;
             case 2:
                 manager.UseAquaCrystalPotion();
-                duration = 3f; // Can iksiri için 3 sn bekleme
+                duration = 3f; 
                 break;
             case 3:
                 manager.UseGreenEnergyPotion();
@@ -94,19 +123,17 @@ public class Damage : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
                 break;
         }
 
-        // İksiri belirtilen süre kadar kilitle
         StartCoroutine(StartCooldownRoutine(index, duration));
     }
 
     private IEnumerator StartCooldownRoutine(int slotIndex, float duration)
     {
-        isSlotOnCooldown[slotIndex] = true;
-
-        // İksirin etkisinin sürmesi kadar bekle
-        yield return new WaitForSeconds(duration);
-
-        // Süre dolunca tekrar erişime aç
-        isSlotOnCooldown[slotIndex] = false;
+        if (slotIndex >= 0 && slotIndex < isSlotOnCooldown.Length)
+        {
+            isSlotOnCooldown[slotIndex] = true;
+            yield return new WaitForSeconds(duration);
+            isSlotOnCooldown[slotIndex] = false;
+        }
     }
 
     private void UpdateSelection(Vector2 screenPoint)
@@ -139,26 +166,30 @@ public class Damage : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
     }
 
     void PositionSlots()
+{
+    int count = slots.Length;
+    if (count == 0) return;
+
+    // 360 dereceyi slot sayısına eşit böl
+    float angleStep = 360f / count;
+
+    for (int i = 0; i < count; i++)
     {
-        float startAngle = 100f;
-        float endAngle = 260f;
+        slots[i].anchorMin = new Vector2(0.5f, 0.5f);
+        slots[i].anchorMax = new Vector2(0.5f, 0.5f);
+        slots[i].pivot = new Vector2(0.5f, 0.5f);
 
-        for (int i = 0; i < slots.Length; i++)
-        {
-            slots[i].anchorMin = new Vector2(0.5f, 0.5f);
-            slots[i].anchorMax = new Vector2(0.5f, 0.5f);
-            slots[i].pivot = new Vector2(0.5f, 0.5f);
+        // Açı hesaplama (İsteğe göre başlangıç açısı eklenebilir)
+        float angle = i * angleStep;
+        float rad = angle * Mathf.Deg2Rad;
 
-            float angle = Mathf.Lerp(startAngle, endAngle, (float)i / Mathf.Max(1, slots.Length - 1));
-            float rad = angle * Mathf.Deg2Rad;
+        float x = Mathf.Cos(rad) * radius;
+        float y = Mathf.Sin(rad) * radius;
 
-            float x = Mathf.Cos(rad) * radius;
-            float y = Mathf.Sin(rad) * radius;
-
-            slots[i].anchoredPosition = new Vector2(x, y);
-            slots[i].SetAsLastSibling();
-        }
+        slots[i].anchoredPosition = new Vector2(x, y);
+        slots[i].SetAsLastSibling();
     }
+}
 
     void HighlightSlot(int index)
     {
@@ -167,18 +198,19 @@ public class Damage : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
             Image slotImage = slots[i].GetComponent<Image>();
             if (slotImage != null)
             {
-                // Beklemedeyse gri gözüksün ve seçilemesin
                 if (isSlotOnCooldown[i])
                 {
                     slotImage.color = Color.gray; 
                 }
                 else if (i == index)
                 {
+                    // Açık ise sarımsı vurgu, kilitli ise kırmızı vurgu
                     slotImage.color = isSlotUnlocked[i] ? new Color(1f, 0.9f, 0.3f, 1f) : Color.red;
                     slots[i].transform.localScale = Vector3.one * 1.25f;
                 }
                 else
                 {
+                    // Normal duruş: Açık ise beyaz, Kilitli ise gri
                     slotImage.color = isSlotUnlocked[i] ? Color.white : Color.gray;
                     slots[i].transform.localScale = Vector3.one;
                 }
@@ -201,6 +233,8 @@ public class Damage : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
 
     private void SetSlotsActive(bool isActive)
     {
+        if (slots == null) return;
+
         foreach (var slot in slots)
         {
             if (slot != null) slot.gameObject.SetActive(isActive);
